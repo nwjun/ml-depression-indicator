@@ -22,9 +22,10 @@ def depressionTest():
         submitted = st.form_submit_button("Submit")
 
         if submitted:
-            depression = DepressionModel("./model/depressionModel.sav")
-            isDepressed = depression.predict(depressionAnswer)
+            depression = DepressionModel("./model/DepressionDL_v1.h5")
+            isDepressed, confidence = depression.predict(depressionAnswer)
             st.write(f"You are {'depressed' if isDepressed else 'not depressed'}")
+            st.write(f"Confidence: {'{:.2f}'.format(float((confidence)*100)) if isDepressed else '{:.2f}'.format(float((1-confidence)*100))}%")
 
 
 def recommendationSys():
