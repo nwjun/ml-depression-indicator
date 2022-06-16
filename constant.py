@@ -88,18 +88,68 @@ depression_questionnaire = [
     },
 ]
 
+"""
+    type:
+        0: radio
+        1: selectbox
+        2: multiselect
+        3: slider
+        4: select-slider
+        5: text input
+        6: number input
+        7: text area
+"""
+
+
 recommendationForm = [
     {
-        'question': "Hi how are you",
-        'options': ["test1", "test2", "test3"],
+        'question': "Gender",
+        'options': ["Male", "Female"],
         'type': 1,
     },
     {
-        'question': "Hi how are you",
-        'type': 6,
-        'kwargs': {
-            'min_value': 0,
-            'max_value': 10
-        }
-    }
+        'question': "How energetic are you?",
+        'image': './images/Q1.png',
+        'options': ["Extraverts - E", "Introverts - I"],
+        'type': 1,
+    },
+    {
+        'question': "How do you see the world & gather information?",
+        'image': './images/Q2.png',
+        'options': ["Sensors - S", "Intuitives - N"],
+        'type': 1,
+    },
+    {
+        'question': "How do you make your decisions?",
+        'image': './images/Q3.png',
+        'options': ["Thinkers - T", "Feelers - F"],
+        'type': 1,
+    },
+    {
+        'question': "How much do you like to plan ahead?",
+        'image': './images/Q4.png',
+        'options': ["Judgers - J", "Perceivers - P"],
+        'type': 1,
+    },
+    {
+        'question': "Who are you?",
+        'image': './images/Personalities.png',
+        'options': ["Analyst(Purple)", "Diplomat(Green)", "Sentinel(Blue)", "Explorer(Red)"],
+        'type': 1,
+    },
+    {
+        'question': "How do you want to feel for stress relieve activities?",
+        'options': ["Happy and carefree", "Calm and creative", "Healthy and satisfied", "Productive and progressing"],
+        'type': 1,
+    },
+    {
+        'question': "Do you prefer indoor or outdoor hobbies?",
+        'options': ['Outdoors', 'Indoors', 'Both', 'It doesn\'t matter'],
+        'type':1,
+    },
+    {
+        'question': 'Do you feel happier when you consume or when you create something?',
+        'options': ['I feel better when I create', 'I feel better when I consume', 'Both', 'I dislike both'],
+        'type': 1,
+    },
 ]

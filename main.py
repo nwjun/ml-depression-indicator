@@ -6,6 +6,7 @@ from constant import depression_questionnaire
 from pageController import PageController
 sys.path.append('./model')
 from depressionModel import DepressionModel
+from PIL import Image
 
 # To add question, add in 'constant.py'
 
@@ -34,6 +35,9 @@ def recommendationSys():
     answer = [None] * len(recommendationForm)
 
     for idx, i in enumerate(recommendationForm):
+        if 'image' in i.keys():
+            image = Image.open(i['image'])
+            st.image(image)
         type = i['type']
         if type == 0:
             answer[idx] = st.radio(i['question'], i['options'], key=idx)
@@ -52,6 +56,15 @@ def recommendationSys():
                 i['question'], key=idx,  **i['kwargs'])
         elif type == 7:
             answer[idx] = st.text_area(i['question'], key=idx)
+    
+    submitted = st.form_submit_button("Submit")
+
+    if submitted:
+        pass
+        # model = DepressionModel("./model/DepressionDL_v1.h5")
+        # isDepressed, confidence = depression.predict(depressionAnswer)
+        # st.write(f"You are {'depressed' if isDepressed else 'not depressed'}")
+        # st.write(f"Confidence: {'{:.2f}'.format(float((confidence)*100)) if isDepressed else '{:.2f}'.format(float((1-confidence)*100))}%")
 
 
 app = PageController()
