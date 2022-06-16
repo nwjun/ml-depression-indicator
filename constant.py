@@ -103,11 +103,6 @@ depression_questionnaire = [
 
 recommendationForm = [
     {
-        'question': "Gender",
-        'options': ["Male", "Female"],
-        'type': 1,
-    },
-    {
         'question': "How energetic are you?",
         'image': './images/Q1.png',
         'options': ["Extraverts - E", "Introverts - I"],
@@ -116,7 +111,7 @@ recommendationForm = [
     {
         'question': "How do you see the world & gather information?",
         'image': './images/Q2.png',
-        'options': ["Sensors - S", "Intuitives - N"],
+        'options': ["Sensors - S", "Intuitive - N"],
         'type': 1,
     },
     {
@@ -134,7 +129,7 @@ recommendationForm = [
     {
         'question': "Who are you?",
         'image': './images/Personalities.png',
-        'options': ["Analyst(Purple)", "Diplomat(Green)", "Sentinel(Blue)", "Explorer(Red)"],
+        'options': ["Analyst (Purple)", "Diplomat (Green)", "Sentinel (Blue)", "Explorer (Red)"],
         'type': 1,
     },
     {
@@ -144,12 +139,17 @@ recommendationForm = [
     },
     {
         'question': "Do you prefer indoor or outdoor hobbies?",
-        'options': ['Outdoors', 'Indoors', 'Both', 'It doesn\'t matter'],
+        'options': ["Outdoors", "Indoors", "Both", "It doesn't matter"],
         'type':1,
     },
     {
         'question': 'Do you feel happier when you consume or when you create something?',
-        'options': ['I feel better when I create', 'I feel better when I consume', 'Both', 'I dislike both'],
+        'options': ["I feel better when I create", "I feel better when I consume", "Both", "I dislike both"],
         'type': 1,
     },
+    {
+        'question': "Gender",
+        'options': ["Male", "Female"],
+        'type': 1,
+    }
 ]
