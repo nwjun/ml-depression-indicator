@@ -1,11 +1,13 @@
 import sys
 import streamlit as st
 import numpy as np
+import tensorflow as tf
 from constant import recommendationForm
 from constant import depression_questionnaire
 from pageController import PageController
 sys.path.append('./model')
 from depressionModel import DepressionModel
+from Recommendation import Recommendation
 from PIL import Image
 
 # To add question, add in 'constant.py'
@@ -34,37 +36,40 @@ def recommendationSys():
 
     answer = [None] * len(recommendationForm)
 
-    for idx, i in enumerate(recommendationForm):
-        if 'image' in i.keys():
-            image = Image.open(i['image'])
-            st.image(image)
-        type = i['type']
-        if type == 0:
-            answer[idx] = st.radio(i['question'], i['options'], key=idx)
-        elif type == 1:
-            answer[idx] = st.selectbox(i["question"], i['options'], key=idx)
-        elif type == 2:
-            answer[idx] = st.multiselect(i["question"], i['options'], key=idx)
-        elif type == 3:
-            answer[idx] = st.slider(i["question"], **i["kwargs"], key=idx)
-        elif type == 4:
-            answer[idx] = st.select_slider(i["question"], i["option"], key=idx)
-        elif type == 5:
-            answer[idx] = st.text_input(i['question'], key=idx)
-        elif type == 6:
-            answer[idx] = st.number_input(
-                i['question'], key=idx,  **i['kwargs'])
-        elif type == 7:
-            answer[idx] = st.text_area(i['question'], key=idx)
-    
-    submitted = st.form_submit_button("Submit")
+    print(answer)
 
-    if submitted:
-        pass
-        # model = DepressionModel("./model/DepressionDL_v1.h5")
-        # isDepressed, confidence = depression.predict(depressionAnswer)
-        # st.write(f"You are {'depressed' if isDepressed else 'not depressed'}")
-        # st.write(f"Confidence: {'{:.2f}'.format(float((confidence)*100)) if isDepressed else '{:.2f}'.format(float((1-confidence)*100))}%")
+    with st.form("my_form"):
+        for idx, i in enumerate(recommendationForm):
+            if 'image' in i.keys():
+                image = Image.open(i['image'])
+                st.image(image)
+            type = i['type']
+            if type == 0:
+                answer[idx] = st.radio(i['question'], i['options'], key=idx)
+            elif type == 1:
+                answer[idx] = st.selectbox(i["question"], i['options'], key=idx)
+            elif type == 2:
+                answer[idx] = st.multiselect(i["question"], i['options'], key=idx)
+            elif type == 3:
+                answer[idx] = st.slider(i["question"], **i["kwargs"], key=idx)
+            elif type == 4:
+                answer[idx] = st.select_slider(i["question"], i["option"], key=idx)
+            elif type == 5:
+                answer[idx] = st.text_input(i['question'], key=idx)
+            elif type == 6:
+                answer[idx] = st.number_input(
+                    i['question'], key=idx,  **i['kwargs'])
+            elif type == 7:
+                answer[idx] = st.text_area(i['question'], key=idx)
+        
+        submitted = st.form_submit_button("Submit")
+
+        if submitted:
+            model = Recommendation("./model/Recommendation.h5")
+            prediction, suggestion = model.predict(answer)
+            st.write(f'Predicted: %s' % prediction)
+            for i in range(len(suggestion)):
+                st.write("Suggestion Top " + str(i+1) + ": " + suggestion[i])
 
 
 app = PageController()
