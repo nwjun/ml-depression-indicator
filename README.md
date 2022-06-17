@@ -8,7 +8,9 @@ A machine learning group project to determine whether a person suffers from majo
 - Kuck Swee Nien ([KuckSN](https://github.com/KuckSN))
 - Law Shiao Yin ([zzzhxlxyyy](https://github.com/zzzhxlxyyy))
 - Lim Wei Xin ([Programmer420-1](https://github.com/Programmer420-1))
-- Nah Wan Jun ([nwjun](https://github.com/nwjun))
+- Nah Wan Jun ([nwjun](https://github.com/nwjun))  
+
+(_Arranged alphabatically_)
 
 ## Installation Guide
 
